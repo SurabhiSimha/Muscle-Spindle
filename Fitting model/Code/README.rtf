@@ -1,0 +1,138 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\})}{\leveltext\leveltemplateid1\'02\'00);}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\})}{\leveltext\leveltemplateid101\'02\'00);}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid102\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\})}{\leveltext\leveltemplateid201\'02\'00);}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid202\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww13960\viewh19160\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf0 PLoS Computational Biology 2017 Manuscript Important Code\
+
+\b0 Author: Kyle P Blum\
+\
+This README gives a description of the most important code for the preprocessing and analysis of the cat muscle spindle data for the PLoS Comp. Bio manuscript. Other functions and scripts are contained in the Code folder, but these are the most important ones for reproducing the results from the paper: \
+\
+\ul Data preprocessing\ulnone :\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0
+\fs24 \cf0 {\listtext	1)	}
+\i \'91spindle_parse.m\'92 \
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls1\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}
+\b Run this first if you want to start the data processing from scratch
+\b0 \
+{\listtext	\uc0\u8259 	}This is the main script for preprocessing the data from the .mat files in the dated folders. \
+{\listtext	\uc0\u8259 	}This is the first script that is run to get from raw data to data suitable for model fitting\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	2)	}
+\i \'91septrials.m\'92 \
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls1\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}This is a helper function used by \'91spindle_parse.m\'92\
+{\listtext	\uc0\u8259 	}This function converts units on physical variables, filters and chops data to reduce file size, and reorganizes data into MATLAB data structures. \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	3)	}
+\i \'91findspikes.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls1\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}This is a helper function used by \'91spindle_parse.m\'92\
+{\listtext	\uc0\u8259 	}This function converts recorded potentials into spiketimes and IFRs, and appends them to the \'91proc_data\'92 structure\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs28 \cf0 \ul \ulc0 Model Fitting\ulnone : \
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0
+\fs24 \cf0 {\listtext	1)	}
+\i \'91spindle_operate_lags.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}
+\b Run this once you\'92ve preprocessed data with spindle_parse. Run this first if you want to start with already preprocessed data (Recommend using a new data directory copy). 
+\b0 \
+{\listtext	\uc0\u8259 	}This script takes all data files and attempts to fit force- and length-related models to it. \
+{\listtext	\uc0\u8259 	}It sweeps through 16 lag values at fits the lagged physical variables to the firing data. These lag values are used later.\
+{\listtext	\uc0\u8259 	}Reads data from and appends new data in proc_data_no_buffer_lags folder.\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	2)	}
+\i \'91spindle_operate.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}
+\b Run this after the mean_lags.mat file has been generated from spindle_statFormat_lags.m
+\b0 \
+{\listtext	\uc0\u8259 	}This script is similar to spindle_operate_lags.m, but instead of 16 lag values, only uses the mean value for a given afferent and model. \
+{\listtext	\uc0\u8259 	}Reads data from and appends new data in proc_data_no_buffer folder. \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	3)	}
+\i \'91spindle_xval.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}This script is similar to spindle_operate, but organizes all data from each afferent into training and testing datasets. \
+{\listtext	\uc0\u8259 	}Models are fit to training datasets, and then tested on the testing datasets. \
+{\listtext	\uc0\u8259 	}Training and testing sets are randomized before model fitting, and this procedure is done 100 times. \
+{\listtext	\uc0\u8259 	}Reads data from proc_data_no_buffer folder and saves new files in each afferent\'92s folder. \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	4)	}
+\i \'91spindle_findGains.m\'92
+\i0 \
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	\uc0\u8259 	}This function sets up and runs the optimization for the current loop from the \'91spindle_operate\'92  and \'91spindle_xval\'92 scripts. \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	5)	}
+\i \'91spindle_cost.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}This function contains the objective function for the optimization.\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	6)	}
+\i \'91kinetics.m\'92, \'91kinematics.m\'92, \'91prochazka.m\'92, \'91mixedKin.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}These functions contain the models for fitting the data to spike rates. \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs28 \cf0 \ul \ulc0 Data analysis\ulnone :\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0
+\fs24 \cf0 {\listtext	1)	}
+\i \'91spindle_statFormat_lags.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}
+\b Run this after spindle_operate_lags.m
+\b0 \
+{\listtext	\uc0\u8259 	}This scripts takes all of the relevant fitting data from proc_data_no_buffer_lags and compiles it into a single .csv file to be saved in the \'91stats\'92 folder (usually has \'93lags\'94 in the name). \
+{\listtext	\uc0\u8259 	}This file will contain a single time lag value for each trial, which represents the lag at which the best fit was possible for a given model and given trial. \
+{\listtext	\uc0\u8259 	}The lag values are the most important data from this portion of the analysis, but parameter values were also used to constrain the optimizations later.\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	2)	}
+\i \'91spindle_statFormat.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1\cf0 {\listtext	\uc0\u8259 	}
+\i0\b Run this after spindle_operate.m
+\i\b0 \
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}This script takes all of the relevant fitting data from proc_data_no_buffer (which was generated using the mean_lags.mat array from the lag analysis) and compiles it into a single .csv file to be saved in the \'91stats\'92 folder\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	3)	}
+\i \'92genPLoSCompBioFigures.m\'92\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1
+\i0 \cf0 {\listtext	\uc0\u8259 	}
+\b Run this script to reproduce raw figures used to make PLoS Comp Bio publication figures. \
+\ls3\ilvl1
+\b0 {\listtext	\uc0\u8259 	}Data is taken from various proc_data folders and used to generate the figures seen in the publication. \
+{\listtext	\uc0\u8259 	}Each section can be run individually to generate each figure, or together as a single script to generate all figures at once. \
+}

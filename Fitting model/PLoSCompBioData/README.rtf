@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww16600\viewh9580\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 2017/08/16\
+Kyle P. Blum\
+\
+
+\fs24 This folder contains all data used in the Blum et al. 2017 PLoS Computational Biology paper titled, \'93Force encoding in muscle spindles during stretch of passive muscle\'94. \
+\
+Data is organized into similar format as output files from Spike2 during experiments. \
+\
+All data files are in \'91.mat\'92 MATLAB format and contain a MATLAB struct (of variable length corresponding to the number of stretch trials) with fields:\
+\
+	1) \'91Force\'92 - measured MT force at the calcaneus in units of Newtons (2kHz)\
+	2) \'91Length\'92 - measured MT length change at the calcaneus in units of mm (2kHz)\
+	3) \'91Velocity\'92 - measured MT velocity in units of mm/s (2kHz)\
+	4) \'91time\'92 - time relative to the beginning of each trial (2kHz)\
+	5) \'91spiketimes\'92 - timestamps of action potential peaks sampled from at 20kHz precision\
+\
+Filenames are given based on the afferent the data came from, in order given in the manuscript (afferents 1-10 were used in model-fitting; afferents 11-12 were used only in initial burst regressions). \
+\
+There are trial types for each afferent. They fall into two general categories, which were used in the paper: \
+\
+	1) Ramp-hold-release trial types:\
+		- \'91accel_ramp\'92: 5 trials of ramp-and-hold stretch independently-controlled peak acceleration and velocity\
+		- \'91trad_ramp\'92: 5 trials of ramp-and-hold stretch covaried peak acceleration and velocity\
+		- \'91accel_series\'92: 16 trials of ramp-and-hold stretch systematically and independently varied stretch accelerations\
+		- \'91trad_series\'92: 16 trials of ramp-and-hold stretch covaried acceleration and velocity values\
+	\
+	2) Repeated ramp-release trial types:\
+		- \'91triangle_series\'92: 2 trials of 5 ramp-release stretch\
+\
+\
+}
