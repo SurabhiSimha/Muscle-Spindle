@@ -16,7 +16,7 @@ else                                   %otherwise...
     Ffib(Ffib < 0 ) = 0;               %half-wave rectify to 0
 end
 
-dF = diff(Ffib)/data.fs; %Calculate derivative of force, dF/dt
+dF = diff(Ffib)*data.fs; %Calculate derivative of force, dF/dt
 [B_df,A_df] = butter(3,50/(data.fs/2),'low'); %Set filter parameters           
 dF = filtfilt(B_df,A_df,dF);                  %Filter dF/dt
 
