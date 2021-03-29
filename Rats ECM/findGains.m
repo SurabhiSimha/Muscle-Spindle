@@ -23,21 +23,27 @@ Beq = [];
 nonlconstr = [];
 
 %%% RUN OPTIMIZATION WITH PARAMETERS AND CONSTRAINTS FROM ABOVE %%%
-[opt_gains,test_cost,exitflag,output] = fmincon(@cost, gains_init, ...
-    A, B, Aeq, Beq, lower_bound, upper_bound, nonlconstr, optimize_options, ...
-    data,flags);
-% IMPORTANT NOTE:
-% Line 26 will only return final values for opt_gains, test_cost, etc.
-% Internally, fmincon.m will search for parameters until conditions for
-% stopping the optimization are met (e.g. tolerances, max function evals,
-% etc.). Stats are calculated based on final values only. 
+switch flags.alg
+    case 1
+        [opt_gains,test_cost,exitflag,output] = fmincon(@cost, gains_init, ...
+            A, B, Aeq, Beq, lower_bound, upper_bound, nonlconstr, optimize_options, ...
+            data,flags);
+        % IMPORTANT NOTE:
+        % Line 26 will only return final values for opt_gains, test_cost, etc.
+        % Internally, fmincon.m will search for parameters until conditions for
+        % stopping the optimization are met (e.g. tolerances, max function evals,
+        % etc.). Stats are calculated based on final values only.
+    case 2
+        [opt_gains,test_cost,exitflag,output] = bads(@(gains_init)cost(gains_init,data,flags),gains_init,...
+            lower_bound, upper_bound,[],[],[],[]);
+end
 
 %%% Find optimal gains %%%
 switch flags.model
     case 1   % Force-related model optimal fit
         [opt_fit,~,~] = kinetics(data,opt_gains,flags); 
     case 2   % Length-related model optimal fit
-        opt_fit = kinematics(data,opt_gains,flags);
+        [opt_fit,~,~,~,~] = kinetics2(data,opt_gains,flags); 
 end
 
 
