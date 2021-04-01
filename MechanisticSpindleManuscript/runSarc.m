@@ -114,7 +114,7 @@
     
     parfor a = 1:numSims
         [hsB(a),dataB(a),hsC(a),dataC(a)] = sarcSimDriver(t,delta_f_activated(a,:),delta_cdl(a,:));
-        
+        [r(a,:),rs(a,:),rd(a,:)] = sarc2spindle(dataB(a),dataC(a),1,1,.1,0,0.13);
         disp(['Done with simulation number ' num2str(a)])
     end
     
